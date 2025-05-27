@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lời nhắn cho xm</title>
+  <style>
+    body {
+      font-family: "Comic Sans MS", cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #message-container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    p {
+      font-size: 1.2em;
+      background: linear-gradient(45deg, #ff4d4d, #ffeb3b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+      margin: 0;
+    }
+    img {
+      width: 100px;
+      margin: 10px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .decoration {
+      position: absolute;
+      opacity: 0.7;
+    }
+    .star {
+      width: 20px;
+      height: 20px;
+      background: yellow;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      animation: fall 5s infinite;
+    }
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: red;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      animation: fall 6s infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-100vh); }
+      100% { transform: translateY(100vh); }
+    }
+    body::before, body::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      animation: fall 5s infinite;
+    }
+    body::before {
+      left: 10%;
+      background: yellow;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      animation-delay: 1s;
+    }
+    body::after {
+      right: 10%;
+      background: red;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      animation-delay: 2s;
+    }
+  </style>
+</head>
+<body>
+  <div id="message-container">
+    <p>Click to start...</p>
+  </div>
+
+  <script>
+    const messages = [
+      { text: "Này xm còn mệt lắm đúng không?", img: "ngu.png" },
+      { text: "Xin lỗi vì vh không biết mà còn làm phiền xm nhé", img: "emvit4.png" },
+      { text: "Nhưng mà xm mệt như thế mà ko chịu uống thuốc là ko được đâu", img: "emoji3.png" },
+      { text: "Vh tui hơi vô dụng tí nhưng mà nếu cần thì cứ tìm vh nhé", img: "vjtne2.png" },
+      { text: "Mong xm mau khỏe để còn chơi với bọn này nhé", img: "emoji7.png" },
+      { text: "Có j cần tâm sự hãy tìm vh vh sẽ luôn ở đâyyy", img: "vjtne1.png" }
+    ];
+
+    let currentIndex = 0;
+
+    document.addEventListener("click", () => {
+      if (currentIndex < messages.length) {
+        const container = document.getElementById("message-container");
+        container.innerHTML = `<img src="${messages[currentIndex].img}" alt="emoji"> <p>${messages[currentIndex].text}</p>`;
+        currentIndex++;
+      } else {
+        window.location.href = "https://beacons.ai/vjtdiver";
+      }
+    });
+  </script>
+</body>
+</html>
